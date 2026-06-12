@@ -51,6 +51,7 @@ Thumbs.db
 
 # Local environment and secrets - keep example files, ignore real configs
 application.properties
+application-secrets.properties
 application-*.properties
 .env
 .env.*
