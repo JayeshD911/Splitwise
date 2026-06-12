@@ -1,0 +1,17 @@
+# Example application properties (DO NOT store real secrets in this file)
+# Copy to application.properties locally or configure via environment variables
+
+# Application name
+spring.application.name=Splitwise
+
+# Example datasource configuration (use environment variables / CI secrets for real values)
+# spring.datasource.url=jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/mydb
+# spring.datasource.username=${DB_USER:username}
+# spring.datasource.password=${DB_PASS:password}
+
+# Example JWT / API keys - DO NOT commit real secrets
+# security.jwt.secret=${JWT_SECRET:change_me}
+
+# Logging example
+# logging.level.root=INFO
+
