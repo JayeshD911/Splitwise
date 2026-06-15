@@ -1,6 +1,16 @@
 package io.github.JayeshD911.Splitwise.commands;
 
+import io.github.JayeshD911.Splitwise.controllers.SettleUpController;
+import io.github.JayeshD911.Splitwise.dtos.SettleUpGroupRequestDTO;
+
 public class SettleUpGroupCommand implements Command {
+
+    private final SettleUpController settleUpController;
+
+    public SettleUpGroupCommand(SettleUpController settleUpController) {
+        this.settleUpController = settleUpController;
+    }
+
     @Override
     public boolean mathch(String commandString) {
         return commandString.startsWith("settle_up_group");
@@ -13,9 +23,9 @@ public class SettleUpGroupCommand implements Command {
             System.out.println("Invalid command format. Usage: settle_up_group <group_id>");
             return;
         }
-        String groupId = commandParts[1];
-        // Call the service method to settle up the group
-        // For example: splitwiseService.settleUpGroup(groupId);
-        System.out.println("Settling up group with ID: " + groupId);
+        Long groupId = Long.parseLong(commandParts[1]);
+        SettleUpGroupRequestDTO req = new SettleUpGroupRequestDTO();
+        req.setGroupId(groupId);
+        System.out.println(settleUpController.settleUpGroup(req).getMessage());
     }
 }

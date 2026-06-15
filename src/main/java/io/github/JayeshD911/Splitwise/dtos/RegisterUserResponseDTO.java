@@ -8,4 +8,6 @@ import lombok.Setter;
 @Setter
 public class RegisterUserResponseDTO {
     private User user;
+    private String message;
+    private boolean success;
 }

@@ -4,23 +4,41 @@ import io.github.JayeshD911.Splitwise.dtos.SettleUpGroupRequestDTO;
 import io.github.JayeshD911.Splitwise.dtos.SettleUpGroupResponseDTO;
 import io.github.JayeshD911.Splitwise.dtos.SettleUpUserRequestDTO;
 import io.github.JayeshD911.Splitwise.dtos.SettleUpUserResponseDTO;
-import org.springframework.stereotype.Component;
+import io.github.JayeshD911.Splitwise.services.SettleUpService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class SettleUpController {
 
-    public SettleUpUserResponseDTO settleUpUser(SettleUpUserRequestDTO requestDTO) {
-        // Implement the logic to settle up the user based on the request
-        // This is a placeholder implementation
+    private final SettleUpService settleUpService;
 
-        return null;
+    public SettleUpController(SettleUpService settleUpService) {
+        this.settleUpService = settleUpService;
+    }
+
+    public SettleUpUserResponseDTO settleUpUser(SettleUpUserRequestDTO requestDTO) {
+        SettleUpUserResponseDTO resp = new SettleUpUserResponseDTO();
+        try {
+            resp.setTransactions(settleUpService.settleUpUser(requestDTO.getUserId()));
+            resp.setSuccess(true);
+            resp.setMessage("Settlements calculated");
+        } catch (Exception e) {
+            resp.setSuccess(false);
+            resp.setMessage(e.getMessage());
+        }
+        return resp;
     }
 
     public SettleUpGroupResponseDTO settleUpGroup(SettleUpGroupRequestDTO requestDTO) {
-        // Implement the logic to settle up the group based on the request
-        // This is a placeholder implementation
-
-        return null;
+        SettleUpGroupResponseDTO resp = new SettleUpGroupResponseDTO();
+        try {
+            resp.setTransactions(settleUpService.settleUpGroup(requestDTO.getGroupId()));
+            resp.setSuccess(true);
+            resp.setMessage("Settlements calculated");
+        } catch (Exception e) {
+            resp.setSuccess(false);
+            resp.setMessage(e.getMessage());
+        }
+        return resp;
     }
 }

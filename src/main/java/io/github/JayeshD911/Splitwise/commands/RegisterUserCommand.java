@@ -10,6 +10,10 @@ import java.util.List;
 public class RegisterUserCommand implements Command {
     private RegisterUserController registerUserController;
 
+    public RegisterUserCommand(RegisterUserController registerUserController) {
+        this.registerUserController = registerUserController;
+    }
+
     //Register <user_name> <Phone_number> <password>
     @Override
     public boolean mathch(String commandString) {

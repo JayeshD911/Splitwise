@@ -1,6 +1,7 @@
 package io.github.JayeshD911.Splitwise.commands;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class CommandExecutor {
     private List<Command> commands;
@@ -17,6 +18,11 @@ public class CommandExecutor {
         this.registerUserCommand = registerUserCommand;
         this.settleUpGroupCommand = settleUpGroupCommand;
         this.settleUpUserCommand = settleUpUserCommand;
+        this.commands = new ArrayList<>();
+        // register provided commands
+        if (registerUserCommand != null) this.commands.add(registerUserCommand);
+        if (settleUpGroupCommand != null) this.commands.add(settleUpGroupCommand);
+        if (settleUpUserCommand != null) this.commands.add(settleUpUserCommand);
     }
 
         public void addCommand(Command command) {
