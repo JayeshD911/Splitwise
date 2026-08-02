@@ -15,6 +15,8 @@ public class Expense extends BaseModel{
     private Double amount;
     @ManyToOne
     private User createdBy;
+    @ManyToOne
+    private Group group;
     @OneToMany
     private List<ExpenseUser> expenseUsers;
     @Enumerated(EnumType.ORDINAL)
